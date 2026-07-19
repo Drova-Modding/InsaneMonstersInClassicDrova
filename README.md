@@ -25,7 +25,7 @@ Drop `InsaneMonstersInClassicDrova.dll` into the `Mods` folder of your Drova ins
 
 ## Building
 
-Set your game path in `InsaneMonstersInClassicDrova/Directory.Build.props`, then run `dotnet build`. The build copies the dll into the game's `Mods` folder automatically.
+Set your game path in `InsaneMonstersInClassicDrova/Directory.Build.props`, then run `dotnet build`. The build copies the dll into the game's `Mods` folder automatically and packages a release zip into `dist`. The zip contains the dll inside a `Mods` folder, so users can extract it directly into the game root.
 
 ## How it works
 
