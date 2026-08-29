@@ -22,12 +22,15 @@ namespace InsaneMonstersInClassicDrova
 
         private static void GetTimingsPrefix(AA_AttackAction_Settings __instance)
         {
-            Apply(__instance);
+            if (PatchInstaller.Is<AA_AttackAction_Settings>(__instance))
+            {
+                Apply(__instance);
+            }
         }
 
         private static void SetValuesFromAttackSettingsPrefix(AA_AttackAction_Settings settings)
         {
-            if (settings != null)
+            if (PatchInstaller.Is<AA_AttackAction_Settings>(settings))
             {
                 Apply(settings);
             }

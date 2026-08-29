@@ -26,7 +26,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void AIGraphsAwakePrefix(AIGraphsBehaviours __instance)
         {
-            if (!ModeGate.MovesetsActive())
+            if (!PatchInstaller.Is<AIGraphsBehaviours>(__instance) || !ModeGate.MovesetsActive())
             {
                 return;
             }
@@ -58,7 +58,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void StalkerAwakePrefix(AIGroupBhvr_Stalker __instance)
         {
-            if (!ModeGate.MovesetsActive() || !__instance._overrideValuesForInsane)
+            if (!PatchInstaller.Is<AIGroupBhvr_Stalker>(__instance) || !ModeGate.MovesetsActive() || !__instance._overrideValuesForInsane)
             {
                 return;
             }
@@ -70,7 +70,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void PeriodicAbilityAwakePrefix(ActorStance_PeriodicAbility __instance)
         {
-            if (ModeGate.MovesetsActive() && __instance._insaneOnly)
+            if (PatchInstaller.Is<ActorStance_PeriodicAbility>(__instance) && ModeGate.MovesetsActive() && __instance._insaneOnly)
             {
                 __instance._insaneOnly = false;
             }
@@ -78,7 +78,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void AbiTraceStartPrefix(ActorABITrace __instance)
         {
-            if (ModeGate.MovesetsActive() && __instance._onInsaneOnly)
+            if (PatchInstaller.Is<ActorABITrace>(__instance) && ModeGate.MovesetsActive() && __instance._onInsaneOnly)
             {
                 __instance._onInsaneOnly = false;
             }
@@ -86,7 +86,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void KamikazePrefabPostfix(HealthBhvr_Bloodquito_Kamikaze __instance, ref AA_ABase __result)
         {
-            if (ModeGate.MovesetsActive() && __instance._hasInsaneVariant && __instance._insanePrefab)
+            if (PatchInstaller.Is<HealthBhvr_Bloodquito_Kamikaze>(__instance) && ModeGate.MovesetsActive() && __instance._hasInsaneVariant && __instance._insanePrefab)
             {
                 __result = __instance._insanePrefab;
             }

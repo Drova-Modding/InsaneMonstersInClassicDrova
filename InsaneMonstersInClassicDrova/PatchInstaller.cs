@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using HarmonyLib;
+using Il2CppInterop.Runtime.InteropTypes;
 using MelonLoader;
 
 namespace InsaneMonstersInClassicDrova
@@ -19,6 +20,18 @@ namespace InsaneMonstersInClassicDrova
             AbilityPatches.Install(harmony);
             TimingPatches.Install(harmony);
             _logger.Msg("Patches installed.");
+        }
+
+        /// <summary>True when the hooked instance really is a <typeparamref name="T"/>.</summary>
+        /// <remarks>
+        /// The shipped IL2CPP build folds identical native method bodies together, so a hook on a short
+        /// Awake/Start/getter also fires for unrelated types that compiled to the same code. Reading our
+        /// serialized fields off such an instance hits arbitrary memory and kills the process with an
+        /// AccessViolation, so every instance patch verifies the runtime class first.
+        /// </remarks>
+        internal static bool Is<T>(Il2CppObjectBase instance) where T : Il2CppObjectBase
+        {
+            return instance != null && !instance.WasCollected && instance.TryCast<T>() != null;
         }
 
         internal static void TryPatch(HarmonyLib.Harmony harmony, Type targetType, string targetMethod, Type patchType,

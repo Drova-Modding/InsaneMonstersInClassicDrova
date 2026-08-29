@@ -2,7 +2,7 @@ using Drova_Modding_API.Access;
 using Drova_Modding_API.GlobalFields;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(InsaneMonstersInClassicDrova.Core), "InsaneMonstersInClassicDrova", "1.0.0", "TrustNoOneElse", null)]
+[assembly: MelonInfo(typeof(InsaneMonstersInClassicDrova.Core), "InsaneMonstersInClassicDrova", "1.0.1", "TrustNoOneElse", null)]
 [assembly: MelonGame("Just2D", "Drova")]
 [assembly: MelonAdditionalDependencies("Drova_Modding_API")]
 

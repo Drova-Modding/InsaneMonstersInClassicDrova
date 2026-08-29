@@ -19,7 +19,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void TriggerAbilityPrefix(AA_Trigger_Ability __instance)
         {
-            if (ModeGate.MovesetsActive() && __instance._insaneOnly)
+            if (PatchInstaller.Is<AA_Trigger_Ability>(__instance) && ModeGate.MovesetsActive() && __instance._insaneOnly)
             {
                 __instance._insaneOnly = false;
             }
@@ -27,7 +27,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void TriggerRandAbilityPrefix(AA_Trigger_RandAbility __instance)
         {
-            if (ModeGate.MovesetsActive() && __instance._insaneOnly)
+            if (PatchInstaller.Is<AA_Trigger_RandAbility>(__instance) && ModeGate.MovesetsActive() && __instance._insaneOnly)
             {
                 __instance._insaneOnly = false;
             }

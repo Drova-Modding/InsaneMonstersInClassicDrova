@@ -12,7 +12,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void SceneRootAwakePrefix(SceneRoot __instance)
         {
-            if (!ModeGate.SpawnGroupsActive())
+            if (!PatchInstaller.Is<SceneRoot>(__instance) || !ModeGate.SpawnGroupsActive())
             {
                 return;
             }

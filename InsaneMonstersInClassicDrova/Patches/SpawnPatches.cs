@@ -16,7 +16,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void SpawnControllerAwakePrefix(SpawnController __instance)
         {
-            if (!ModeGate.SpawnGroupsActive() || !__instance._overrideDataInInsaneMode)
+            if (!PatchInstaller.Is<SpawnController>(__instance) || !ModeGate.SpawnGroupsActive() || !__instance._overrideDataInInsaneMode)
             {
                 return;
             }
@@ -32,7 +32,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void CheckConditionPostfix(GameModeGlobalCondition __instance, ref bool __result)
         {
-            if (!ModeGate.SpawnGroupsActive() || !ModeGate.TryGetPretendInsaneMode(out var pretendMode))
+            if (!PatchInstaller.Is<GameModeGlobalCondition>(__instance) || !ModeGate.SpawnGroupsActive() || !ModeGate.TryGetPretendInsaneMode(out var pretendMode))
             {
                 return;
             }
