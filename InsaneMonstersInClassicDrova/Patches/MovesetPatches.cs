@@ -4,7 +4,7 @@ using Il2CppDrova.AI.Graphs;
 using Il2CppDrova.AI.GroupBhvrs;
 using Il2CppDrova.AI.Modules;
 
-namespace InsaneMonstersInClassicDrova
+namespace InsaneMonstersInClassicDrova.Patches
 {
     internal static class MovesetPatches
     {

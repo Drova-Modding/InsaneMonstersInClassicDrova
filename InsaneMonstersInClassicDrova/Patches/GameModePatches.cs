@@ -1,6 +1,6 @@
 using Il2CppDrova;
 
-namespace InsaneMonstersInClassicDrova
+namespace InsaneMonstersInClassicDrova.Patches
 {
     internal static class GameModePatches
     {

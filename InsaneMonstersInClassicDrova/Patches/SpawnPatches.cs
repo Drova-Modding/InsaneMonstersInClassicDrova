@@ -2,7 +2,7 @@ using Il2CppDrova;
 using Il2CppDrova.GlobalVarSystem;
 using Il2CppDrova.Spawners;
 
-namespace InsaneMonstersInClassicDrova
+namespace InsaneMonstersInClassicDrova.Patches
 {
     internal static class SpawnPatches
     {
@@ -20,7 +20,7 @@ namespace InsaneMonstersInClassicDrova
             {
                 return;
             }
-            if (__instance._spawnDataInsane != null && __instance._spawnDataInsane.Count > 0)
+            if (__instance._spawnDataInsane is { Count: > 0 })
             {
                 __instance._spawnData = __instance._spawnDataInsane;
             }
@@ -32,7 +32,7 @@ namespace InsaneMonstersInClassicDrova
 
         private static void CheckConditionPostfix(GameModeGlobalCondition __instance, ref bool __result)
         {
-            if (!PatchInstaller.Is<GameModeGlobalCondition>(__instance) || !ModeGate.SpawnGroupsActive() || !ModeGate.TryGetPretendInsaneMode(out var pretendMode))
+            if (!PatchInstaller.Is<GameModeGlobalCondition>(__instance) || !ModeGate.SpawnGroupsActive() || !ModeGate.TryGetPretendInsaneMode(out GameMode pretendMode))
             {
                 return;
             }

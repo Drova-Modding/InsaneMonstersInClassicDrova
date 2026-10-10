@@ -5,7 +5,7 @@ A MelonLoader mod for Drova - Forsaken Kin. It brings the extra monster spawns a
 ## What it does
 
 - Insane spawn groups: bigger and additional monster waves, insane-only placed encounters and insane-only sub scenes
-- Insane movesets and skills: alternate combat AI graphs, insane-only abilities and attack patterns, more aggressive group behaviour
+- Insane movesets and skills: alternate combat AI graphs, insane-only abilities and attack patterns, more aggressive group behavior
 - Insane attack timings: faster attack phases where the game authors them, applied and reverted live when you flip the switch
 
 Each feature has its own switch in the in-game options menu under the Modding tab. Spawn and moveset changes apply after loading a savegame, attack timings apply immediately.
@@ -14,10 +14,14 @@ Each feature has its own switch in the in-game options menu under the Modding ta
 
 Insane equipment presets stay off. Insane weapon variants carry higher damage values, which would break the balance this mod wants to preserve. The mod also disables itself automatically when the loaded savegame already runs in an Insane mode.
 
+## Co-op
+
+In a co-op session the host's switches count on every machine, since different switches make different monsters. A client already in a world reloads its save once to pick up the host's spawn and moveset switches. A client's own switches come back when the session ends.
+
 ## Requirements
 
 - [MelonLoader](https://melonwiki.xyz) 0.7 or newer
-- [Drova Modding API](https://github.com/Drova-Modding) 0.5.3 or newer
+- [Drova Modding API](https://github.com/Drova-Modding) 0.6.0 or newer
 
 ## Installation
 

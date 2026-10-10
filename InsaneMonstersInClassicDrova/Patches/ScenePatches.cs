@@ -1,6 +1,7 @@
+using Il2Cpp;
 using Il2CppDrova;
 
-namespace InsaneMonstersInClassicDrova
+namespace InsaneMonstersInClassicDrova.Patches
 {
     internal static class ScenePatches
     {
@@ -16,18 +17,15 @@ namespace InsaneMonstersInClassicDrova
             {
                 return;
             }
-            var insaneScenes = __instance._onlyInsaneScenes;
-            var additiveScenes = __instance._additiveScenes;
+            Il2CppSystem.Collections.Generic.List<SceneRef> insaneScenes = __instance._onlyInsaneScenes;
+            Il2CppSystem.Collections.Generic.List<SceneRef> additiveScenes = __instance._additiveScenes;
             if (insaneScenes != null && additiveScenes != null && insaneScenes.Count > 0)
             {
-                for (int i = 0; i < insaneScenes.Count; i++)
+                foreach (SceneRef scene in insaneScenes)
                 {
-                    additiveScenes.Add(insaneScenes[i]);
+                    additiveScenes.Add(scene);
                 }
-                if (!__instance._loadAdditiveScenes)
-                {
-                    __instance._loadAdditiveScenes = true;
-                }
+                __instance._loadAdditiveScenes = true;
             }
             insaneScenes?.Clear();
             __instance._onlyDefaultScenes?.Clear();

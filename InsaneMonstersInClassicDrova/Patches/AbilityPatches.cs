@@ -1,7 +1,7 @@
 using Il2CppDrova.ABI;
 using Il2CppDrova.ActorActions;
 
-namespace InsaneMonstersInClassicDrova
+namespace InsaneMonstersInClassicDrova.Patches
 {
     internal static class AbilityPatches
     {

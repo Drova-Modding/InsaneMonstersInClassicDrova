@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
 using Il2CppDrova.ActorActions;
+using Timing = Il2CppDrova.ActorActions.AA_AttackAction_Settings.Timing;
 
-namespace InsaneMonstersInClassicDrova
+namespace InsaneMonstersInClassicDrova.Patches
 {
     internal static class TimingPatches
     {
-        private static readonly Dictionary<IntPtr, (AA_AttackAction_Settings.Timing Base, List<AA_AttackAction_Settings.Timing> Combos)> Originals = new();
+        private static readonly Dictionary<IntPtr, (Timing Base, List<Timing> Combos)> Originals = new();
 
         internal static void Install(HarmonyLib.Harmony harmony)
         {
@@ -45,18 +44,18 @@ namespace InsaneMonstersInClassicDrova
                 {
                     return;
                 }
-                var insaneTimings = settings._insaneTimings;
+                Il2CppSystem.Collections.Generic.List<Timing> insaneTimings = settings._insaneTimings;
                 if (insaneTimings == null || insaneTimings.Count == 0)
                 {
                     return;
                 }
-                List<AA_AttackAction_Settings.Timing> originalCombos = new();
-                var combos = settings._comboTimings;
+                List<Timing> originalCombos = new();
+                Il2CppSystem.Collections.Generic.List<Timing> combos = settings._comboTimings;
                 if (combos != null)
                 {
-                    for (int i = 0; i < combos.Count; i++)
+                    foreach (Timing timing in combos)
                     {
-                        originalCombos.Add(combos[i]);
+                        originalCombos.Add(timing);
                     }
                 }
                 Originals[pointer] = (settings._baseTimings, originalCombos);
@@ -72,7 +71,7 @@ namespace InsaneMonstersInClassicDrova
             else if (Originals.TryGetValue(pointer, out var original))
             {
                 settings._baseTimings = original.Base;
-                var combos = settings._comboTimings;
+                Il2CppSystem.Collections.Generic.List<Timing> combos = settings._comboTimings;
                 if (combos != null)
                 {
                     for (int i = 0; i < combos.Count && i < original.Combos.Count; i++)
